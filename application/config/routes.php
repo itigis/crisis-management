@@ -49,11 +49,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-<<<<<<< HEAD
-// fe el routing el specific abl el general
-$route['default_controller'] = 'welcome'; //esm el site bs w slash
-$route['point/(:any)/(:any)'] = 'point/$1/$2';
-$route['(:any)'] = 'pages/view/$1';// esm el controller 3ala esm el action 3ala el argument
 =======
 $route['default_controller'] = 'pages/view';
 $route['(:any)/(:any)/(:any)'] = '$1/$2/$3';
