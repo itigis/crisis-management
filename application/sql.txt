@@ -1,0 +1,94 @@
+CREATE USER "User" WITH
+	LOGIN
+	NOSUPERUSER
+	NOCREATEDB
+	NOCREATEROLE
+	NOINHERIT
+	NOREPLICATION
+	CONNECTION LIMIT -1;
+	---------------------------
+	CREATE DATABASE "Features"
+    WITH 
+    OWNER = "User"
+    ENCODING = 'UTF8'
+    CONNECTION LIMIT = -1;
+    ---------------------------
+    CREATE TABLE public."Points"
+(
+    "ID" serial NOT NULL,
+    "Name" text NOT NULL,
+    "Location" point NOT NULL,
+    "Description" text,
+    "Type" text NOT NULL,
+    "Capacity" text NOT NULL,
+    PRIMARY KEY ("ID")
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public."Points"
+    OWNER to "User";
+
+    -----------------------------
+
+CREATE TABLE public."Swales"
+(
+    "ID" serial NOT NULL,
+    "Name" text NOT NULL,
+    "Location" polygon NOT NULL,
+    "Description" text,
+    "Capacity" text NOT NULL,
+    "Seasonality" text NOT NULL,
+    "Grade" text NOT NULL,
+    PRIMARY KEY ("ID")
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public."Swales"
+    OWNER to "User";
+
+   --------------------------- 
+
+   CREATE TABLE public."Alarm"
+(
+    "UserID" integer NOT NULL,
+    "Location" point NOT NULL,
+    "Time" timestamp without time zone NOT NULL,
+    "Need" text,
+    "Description" text,
+    "UserName" text NOT NULL,
+    PRIMARY KEY ("UserID")
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public."Alarm"
+    OWNER to "User";
+
+    ---------------------------
+
+    CREATE TABLE public."Users"
+(
+    "ID" serial NOT NULL,
+    "Name" text NOT NULL,
+    "E-mail" text NOT NULL,
+    "Password" text NOT NULL,
+    "Role" text NOT NULL,
+    PRIMARY KEY ("ID")
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public."Users"
+    OWNER to "User";
+
+    --------------------------   
