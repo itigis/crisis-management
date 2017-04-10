@@ -6,13 +6,15 @@ CREATE USER "User" WITH
 	NOINHERIT
 	NOREPLICATION
 	CONNECTION LIMIT -1;
-	---------------------------
+
+
 	CREATE DATABASE "Features"
     WITH 
     OWNER = "User"
     ENCODING = 'UTF8'
     CONNECTION LIMIT = -1;
-    ---------------------------
+
+
     CREATE TABLE public."Points"
 (
     "ID" serial NOT NULL,
@@ -31,7 +33,8 @@ TABLESPACE pg_default;
 ALTER TABLE public."Points"
     OWNER to "User";
 
-    -----------------------------
+
+
 
 CREATE TABLE public."Swales"
 (
@@ -52,7 +55,8 @@ TABLESPACE pg_default;
 ALTER TABLE public."Swales"
     OWNER to "User";
 
-   --------------------------- 
+
+
 
    CREATE TABLE public."Alarm"
 (
@@ -72,7 +76,8 @@ TABLESPACE pg_default;
 ALTER TABLE public."Alarm"
     OWNER to "User";
 
-    ---------------------------
+
+
 
     CREATE TABLE public."Users"
 (
@@ -91,4 +96,4 @@ TABLESPACE pg_default;
 ALTER TABLE public."Users"
     OWNER to "User";
 
-    --------------------------   
+

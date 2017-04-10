@@ -1,8 +1,8 @@
 <?php
 	/**
-	* database
+	* database Models
 	*/
-	class Users_Model
+	class Users
 	{
 		public $ID;
 		public $Name;
@@ -21,7 +21,7 @@
 		
 	}
 
-	class Swales_Model
+	class Swales
 	{
 		public $ID;
 		public $Name;
@@ -44,7 +44,7 @@
 		
 	}
 
-	class Points_Model
+	class Points
 	{
 		public $ID;
 		public $Name;
@@ -65,7 +65,7 @@
 		
 	}
 
-	class Alarm_Model
+	class Alarm
 	{
 		public $UserID;
 		public $UserName;
