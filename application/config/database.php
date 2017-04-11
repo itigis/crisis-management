@@ -74,6 +74,7 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
+
 	'dsn'	=> 'pgsql:host=localhost;port=5432;dbname=database_name',
 	'hostname' => 'localhost',
 	'username' => 'User',
@@ -94,4 +95,4 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
-$db['default']['dsn'] = 'pgsql:host=localhost;port=5432;dbname=database_name';
+
