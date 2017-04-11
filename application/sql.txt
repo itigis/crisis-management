@@ -1,3 +1,5 @@
+//// 
+
 CREATE USER "User" WITH
 	LOGIN
 	NOSUPERUSER
@@ -6,13 +8,15 @@ CREATE USER "User" WITH
 	NOINHERIT
 	NOREPLICATION
 	CONNECTION LIMIT -1;
-
+////////////////////////////////////////////
 
 	CREATE DATABASE "Features"
     WITH 
     OWNER = "User"
     ENCODING = 'UTF8'
     CONNECTION LIMIT = -1;
+
+//// connect to the new Database (Features) 
 
 
     CREATE TABLE public."Points"
