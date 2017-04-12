@@ -75,7 +75,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 
-	'dsn'	=> 'pgsql:host=localhost;port=5432;dbname=database_name',
+	'dsn'	=> 'pgsql:host=localhost;port=5432;dbname=Features',
 	'hostname' => 'localhost',
 	'username' => 'User',
 	'password' => '',
