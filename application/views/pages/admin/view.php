@@ -1,12 +1,19 @@
-<h2><?php echo $title; ?></h2>
 
+<table class="table table-striped table-hover" > 
+<thead>
+<th>ID </th>
+<th>Name </th>
+<th>email </th>
+<th>Role </th>
+</thead>
+<tbody>
 <?php foreach ($users as $user): ?>
-
-        <h3><?php echo $user['id']; ?></h3>
-        <div class="main">
-                <?php echo $user['name']; ?>
-                <?php echo $user['E_mail']; ?>
-                <?php echo $user['role']; ?>
-        </div>
-
+<?php echo "<tr>
+<td> {$user['ID']} </td>
+<td> {$user['Name']} </td>
+<td> {$user['E-mail']}</td>
+<td> {$user['Role']} </td>
+</tr>" ?>
 <?php endforeach; ?>
+</tbody>
+</table>

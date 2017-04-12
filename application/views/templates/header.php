@@ -2,8 +2,8 @@
 
 <head>
 	<title>Crisis Management</title>
-	<link rel="stylesheet" href="../bootstrap.css">
-        <script src="../bootstrap.min.js" ></script>
+	<link rel="stylesheet" href="/assets/bootstrap.min.css">
+        <script src="/assets/bootstrap.min.js" ></script>
 </head>
 
 <body>
