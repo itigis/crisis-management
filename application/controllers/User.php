@@ -4,13 +4,13 @@ class User extends CI_Controller {
         public function __construct()
         {
                 parent::__construct();
-                $this->load->model('users');
+                $this->load->model('Users');
                 $this->load->helper('url_helper');
         }
 
         public function index()
         {
-                $data['users'] = $this->users->get_all_users();
+                $data['users'] = $this->Users->get_all_users();
                 $data['title'] = 'Users Administration';
 
         $this->load->view('templates/header', $data);
@@ -20,7 +20,7 @@ class User extends CI_Controller {
 
         public function viewById($id = NULL)
         {
-                $data['user_item'] = $this->users->get_user_by_id($id);
+                $data['user_item'] = $this->Users->get_user_by_id($id);
 
                  if (empty($data['user_item']))
         {
