@@ -30,12 +30,10 @@ class Users extends CI_Model {
     public function create_user (){
         
         $data = array(
-            'Name' => $this->input->post('user_name'),
-            'E-mail' => $this->input->post('user_E-mail'),
-            'Password' => $this->input->post('user_password'),
-            'Role' => $this->input->post('user_role'),
-           
-  
+            'Name' => $this->input->post('name'),
+            'E-mail' => $this->input->post('email'),
+            'Password' => $this->input->post('password'),
+            'Role' => 'user' 
         );
         
         
@@ -46,10 +44,10 @@ class Users extends CI_Model {
     public function update_user ($id){
         
          $data = array(
-            'Name' => $this->input->post('user_name'),
-            'E-mail' => $this->input->post('user_E-mail'),
-            'Password' => $this->input->post('user_password'),
-            'Role' => $this->input->post('user_role'),
+            'Name' => $this->input->post('name'),
+            'E-mail' => $this->input->post('email'),
+            'Password' => $this->input->post('password'),
+          //  'Role' => $this->input->post('user_role'),
            
         );
             $this->db->where('ID', $id);

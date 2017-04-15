@@ -7,13 +7,25 @@
 <th>Role </th>
 </thead>
 <tbody>
-<?php foreach ($users as $user): ?>
-<?php echo "<tr>
+<?php if(isset($users))
+{ 
+ foreach ($users as $user)
+ {
+echo "<tr>
 <td> {$user['ID']} </td>
 <td> {$user['Name']} </td>
 <td> {$user['E-mail']}</td>
 <td> {$user['Role']} </td>
-</tr>" ?>
-<?php endforeach; ?>
+</tr>" ;
+ }
+} else {
+ echo "<tr>
+<td> {$user['ID']} </td>
+<td> {$user['Name']} </td>
+<td> {$user['E-mail']}</td>
+<td> {$user['Role']} </td>
+</tr>";
+}
+?>
 </tbody>
 </table>

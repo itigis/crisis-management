@@ -8,93 +8,94 @@ class User extends CI_Controller {
                 $this->load->helper('url_helper');
         }
 
-        public function index()
+        public function index($id = NULL)
         {
+                $data['title'] = 'Users Administration';                
+                if ($id == NULL)
+                {
                 $data['users'] = $this->Users->get_all_users();
-                $data['title'] = 'Users Administration';
-
-        $this->load->view('templates/header', $data);
-        $this->load->view('pages/admin/view', $data);
-        $this->load->view('templates/footer');
+                }
+                else {
+                        $data['user'] = $this->Users->get_user_by_id($id);
+                          if (empty($data['user']))
+                                {
+                                        show_404();
+                                }
+                }
+                $this->load->view('templates/header', $data);
+                $this->load->view('pages/admin/view', $data);
+                $this->load->view('templates/footer');
         }
 
-        public function viewById($id = NULL)
+       
+         public function create()
         {
-                $data['user_item'] = $this->Users->get_user_by_id($id);
+                $this->load->helper('form');
+                $this->load->library('form_validation');
+                $data['title'] = 'Create a new user';
+                //  $this->form_validation->set_rules('id', 'ID', 'required');
+                $this->form_validation->set_rules('name', 'Name', 'required');
+                $this->form_validation->set_rules('password', 'Password', 'required');
+                $this->form_validation->set_rules('email', 'E_mail', 'required');
+                if ($this->form_validation->run() === FALSE)
+                {
+                        $this->load->view('templates/header', $data);
+                        $this->load->view('pages/admin/create');
+                        $this->load->view('templates/footer');
 
-                 if (empty($data['user_item']))
+                }
+                else
+                {
+                        $this->Users->create_user();
+                        $this->load->view('pages/admin/success');
+                }
+        }
+
+
+        public function update($id = NULL)
         {
-                show_404();
+                 $data['user'] = $this->Users->get_user_by_id($id);
+
+                if (empty($data['user']))
+                {
+                        show_404();
+                }
+
+                $this->load->helper('form');
+                $this->load->library('form_validation');
+
+                $data['title'] = 'Manage user account';
+
+                //$this->form_validation->set_rules('id', 'ID', 'required');
+                $this->form_validation->set_rules('name', 'Name', 'required');
+                $this->form_validation->set_rules('password', 'Password', 'required');
+                $this->form_validation->set_rules('email', 'E_mail', 'required');
+                
+
+                if ($this->form_validation->run() === FALSE)
+                {
+                        $this->load->view('templates/header', $data);
+                        $this->load->view('pages/admin/update');
+                        $this->load->view('templates/footer');
+                }
+                else
+                {
+                        $this->Users->update_user($id);
+                        $this->load->view('pages/admin/success');
+                }
         }
 
-        $data['title'] = 'Users Administration';
-
-        $this->load->view('templates/header', $data);
-        $this->load->view('pages/admin/view', $data);
-        $this->load->view('templates/footer');
-        }
-
-        public function create()
-{
-    $this->load->helper('form');
-    $this->load->library('form_validation');
-
-    $data['title'] = 'Create a new user';
-
-    $this->form_validation->set_rules('id', 'ID', 'required');
-    $this->form_validation->set_rules('name', 'Name', 'required');
-    $this->form_validation->set_rules('password', 'Password', 'required');
-    $this->form_validation->set_rules('email', 'E_mail', 'required');
-    
-
-    if ($this->form_validation->run() === FALSE)
-    {
-        $this->load->view('templates/header', $data);
-        $this->load->view('pages/admin/create');
-        $this->load->view('templates/footer');
-
-    }
-    else
-    {
-        $this->users->create_user();
-        $this->load->view('pages/admin/success');
-    }
-}
-
-
-public function update($id = NULL)
-{
-        $data['user_item'] = $this->users->get_user_by_id($id);
-
-                if (empty($data['user_item']))
+        public function delete ($id= NULL)
         {
-                show_404();
+        $data['user'] = $this->Users->get_user_by_id($id);
+           if (empty($data['user']))
+                {
+                        show_404();
+                }
+                else
+                {
+                        $this->Users->delete_user($id);
+                        $this->load->view('pages/admin/success');
+                }
         }
-
-    $this->load->helper('form');
-    $this->load->library('form_validation');
-
-    $data['title'] = 'Manage user account';
-
-    $this->form_validation->set_rules('id', 'ID', 'required');
-    $this->form_validation->set_rules('name', 'Name', 'required');
-    $this->form_validation->set_rules('password', 'Password', 'required');
-    $this->form_validation->set_rules('email', 'E_mail', 'required');
-    
-
-    if ($this->form_validation->run() === FALSE)
-    {
-        $this->load->view('templates/header', $data);
-        $this->load->view('pages/admin/update');
-        $this->load->view('templates/footer');
-
-    }
-    else
-    {
-        $this->users->update_user($id);
-        $this->load->view('pages/admin/success');
-    }
-}
-
-
 }
